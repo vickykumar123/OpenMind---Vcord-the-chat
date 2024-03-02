@@ -5,6 +5,8 @@ import NavigationAction from "./NavigationAction";
 import {Separator} from "../ui/separator";
 import {ScrollArea} from "../ui/scroll-area";
 import NavigationItem from "./NavigationItem";
+import {DarkModeToggle} from "../ui/darkmode";
+import {UserButton} from "@clerk/nextjs";
 
 export default async function NavigationSidebar() {
   const profile = await currentUser();
@@ -23,10 +25,10 @@ export default async function NavigationSidebar() {
   });
 
   return (
-    <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22] py-3 rounded-r-md">
+    <div className="space-y-4 flex flex-col items-center h-full text-primary w-full bg-slate-200 dark:bg-[#1E1F22] py-3 rounded-r-md">
       <NavigationAction />
       <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto" />
-      <ScrollArea>
+      <ScrollArea className="flex-1 w-full">
         {servers.map((server) => (
           <div key={server.id} className="mb-4">
             <NavigationItem
@@ -37,6 +39,17 @@ export default async function NavigationSidebar() {
           </div>
         ))}
       </ScrollArea>
+      <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
+        <DarkModeToggle />
+        <UserButton
+          afterSignOutUrl="/"
+          appearance={{
+            elements: {
+              avatarBox: "h-[48px] w-[48px]",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }

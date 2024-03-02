@@ -2,8 +2,9 @@ import type {Metadata} from "next";
 import {Open_Sans} from "next/font/google";
 import "./globals.css";
 import {ClerkProvider} from "@clerk/nextjs";
-import {ThemeProvider} from "@/components/ThemeProvider";
+import {ThemeProvider} from "@/components/providers/ThemeProvider";
 import {cn} from "@/lib/utils";
+import {ModalProvider} from "@/components/providers/ModalProvider";
 
 const font = Open_Sans({subsets: ["latin"]});
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>
