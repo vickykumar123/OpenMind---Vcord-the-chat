@@ -27,7 +27,7 @@ import {Input} from "../ui/input";
 import {Button} from "../ui/button";
 import FileUpload from "../FileUpload";
 import {useRouter} from "next/navigation";
-import {useModal} from "@/hooks/use-model-store";
+import {useModal} from "@/hooks/useModelStore";
 
 const formSchema = z.object({
   name: z.string().min(1, {
