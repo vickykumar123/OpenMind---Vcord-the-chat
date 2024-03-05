@@ -19,7 +19,7 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
     include: {
       channels: {
         orderBy: {
-          createdAt: "asc",
+          createdAt: "desc",
         },
       },
       members: {
