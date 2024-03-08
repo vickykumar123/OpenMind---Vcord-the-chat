@@ -17,7 +17,7 @@ model Profile{
   name String
   imageUrl String @db.Text
   email String @db.Text
-
+  anon_name String @unique
   servers Server[]
   members Member[]
   channels Channel[]
