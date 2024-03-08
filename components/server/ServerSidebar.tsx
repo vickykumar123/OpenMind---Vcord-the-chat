@@ -142,7 +142,7 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
               label="Voice Channels"
               role={role}
               sectionType="channels"
-              channelType={ChannelType.TEXT}
+              channelType={ChannelType.AUDIO}
             />
             {audioChannels.map((channel) => (
               <ServerChannel
@@ -161,7 +161,7 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
               label="Video Channels"
               role={role}
               sectionType="channels"
-              channelType={ChannelType.TEXT}
+              channelType={ChannelType.VIDEO}
             />
             {videoChannels.map((channel) => (
               <ServerChannel
@@ -183,7 +183,7 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
               server={server}
             />
             {members.map((member) => (
-              <ServerMember key={member.id} />
+              <ServerMember key={member.id} member={member} server={server} />
             ))}
           </div>
         )}
