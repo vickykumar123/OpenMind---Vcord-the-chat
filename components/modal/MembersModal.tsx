@@ -38,6 +38,7 @@ import {
 import {MemberRole} from "@prisma/client";
 import axios from "axios";
 import {useRouter} from "next/navigation";
+import {profile} from "console";
 
 const roleIconMap = {
   GUEST: null,
@@ -92,6 +93,11 @@ export default function MembersModal() {
     }
   };
 
+  const redirectToChat = (memberId: string) => {
+    router.push(`/servers/${server.id}/conversations/${memberId}`);
+    onClose();
+  };
+
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent className="bg-white text-black overflow-hidden">
@@ -109,7 +115,12 @@ export default function MembersModal() {
               <UserAvatar src={member.profile.imageUrl} />
               <div className="flex flex-col gap-y-1">
                 <div className="text-xs font-semibold flex items-center gap-x-1">
-                  {member.profile.anon_name}
+                  <span
+                    onClick={() => redirectToChat(member.id)}
+                    className="cursor-pointer"
+                  >
+                    {member.profile.anon_name}
+                  </span>
                   {roleIconMap[member.role]}
                 </div>
                 <p className="text-xs text-zinc-500">{member.role}</p>
