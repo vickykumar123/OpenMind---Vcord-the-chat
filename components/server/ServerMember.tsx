@@ -23,6 +23,10 @@ export default function ServerMember({member, server}: ServerMemberProps) {
   const params = useParams();
   const router = useRouter();
 
+  const onClick = () => {
+    router.push(`/servers/${params.serverId}/conversations/${member.id}`);
+  };
+
   const icon = roleIconMap[member.role];
   return (
     <button
@@ -30,6 +34,7 @@ export default function ServerMember({member, server}: ServerMemberProps) {
         "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition mb-1",
         params?.memberId === member.id && "bg-zinc-700/20 dark:bg-zinc-700"
       )}
+      onClick={onClick}
     >
       <UserAvatar
         src={member.profile.imageUrl}
