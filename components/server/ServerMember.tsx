@@ -5,9 +5,10 @@ import {Member, MemberRole, Profile, Server} from "@prisma/client";
 import {ShieldAlert, ShieldCheck} from "lucide-react";
 import {useParams, useRouter} from "next/navigation";
 import UserAvatar from "../UserAvatar";
+import {ProfileWithoutName} from "@/types";
 
 interface ServerMemberProps {
-  member: Member & {profile: Profile};
+  member: Member & {profile: ProfileWithoutName};
   server: Server;
 }
 
@@ -24,7 +25,7 @@ export default function ServerMember({member, server}: ServerMemberProps) {
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/servers/${params.serverId}/conversations/${member.id}`);
+    router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
   };
 
   const icon = roleIconMap[member.role];

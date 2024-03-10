@@ -4,8 +4,10 @@ import {Server as SocketIOServer} from "socket.io";
 
 import {Server, Member, Profile} from "@prisma/client";
 
+export type ProfileWithoutName = Omit<Profile, "name" | "email">;
+
 export type ServerWithMembersWithProfiles = Server & {
-  members: (Member & {profile: Profile})[];
+  members: (Member & {profile: ProfileWithoutName})[];
 };
 
 export type NextApiResponseServerIo = NextApiResponse & {
