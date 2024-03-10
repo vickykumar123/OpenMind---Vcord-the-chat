@@ -1,5 +1,5 @@
 "use client";
-import {createContext, useContext, useEffect, useState} from "react";
+import {createContext, memo, useContext, useEffect, useState} from "react";
 import {io as ClientIO} from "socket.io-client";
 
 type SocketContextType = {
@@ -12,40 +12,44 @@ const SocketContext = createContext<SocketContextType>({
   isConnected: false,
 });
 
-export const SocketProvider = ({children}: {children: React.ReactNode}) => {
-  const [socket, setSocket] = useState(null);
-  const [isConnected, setIsConnected] = useState(false);
+export const SocketProvider = memo(
+  ({children}: {children: React.ReactNode}) => {
+    const [socket, setSocket] = useState(null);
+    const [isConnected, setIsConnected] = useState(false);
 
-  useEffect(() => {
-    const socketInstance = new (ClientIO as any)(
-      process.env.NEXT_PUBLIC_SITE_URL!,
-      {
-        path: "/api/socket/io",
-        addTrailingSlash: false,
-      }
+    useEffect(() => {
+      const socketInstance = new (ClientIO as any)(
+        process.env.NEXT_PUBLIC_SITE_URL!,
+        {
+          path: "/api/socket/io",
+          addTrailingSlash: false,
+        }
+      );
+
+      socketInstance.on("connect", () => {
+        setIsConnected(true);
+      });
+
+      socketInstance.on("disconnect", () => {
+        setIsConnected(false);
+      });
+
+      setSocket(socketInstance);
+      return () => {
+        socketInstance.disconnect();
+      };
+    }, []);
+
+    return (
+      <SocketContext.Provider value={{socket, isConnected}}>
+        {children}
+      </SocketContext.Provider>
     );
-
-    socketInstance.on("connect", () => {
-      setIsConnected(true);
-    });
-
-    socketInstance.on("disconnect", () => {
-      setIsConnected(false);
-    });
-
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
-
-  return (
-    <SocketContext.Provider value={{socket, isConnected}}>
-      {children}
-    </SocketContext.Provider>
-  );
-};
+  }
+);
 
 export const useSocket = () => {
   return useContext(SocketContext);
 };
+
+SocketProvider.displayName = "Child"; // Not necessary

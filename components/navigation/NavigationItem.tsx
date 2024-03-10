@@ -4,17 +4,15 @@ import {cn} from "@/lib/utils";
 import {ToolTip} from "../Tooltip";
 import {useParams, useRouter} from "next/navigation";
 import Image from "next/image";
+import {memo} from "react";
 
 interface NavigationItemProps {
   id: string;
   imageUrl: string;
   name: string;
 }
-export default function NavigationItem({
-  id,
-  imageUrl,
-  name,
-}: NavigationItemProps) {
+
+const NavigationItem = memo(({id, imageUrl, name}: NavigationItemProps) => {
   const params = useParams();
   const router = useRouter();
 
@@ -44,4 +42,7 @@ export default function NavigationItem({
       </button>
     </ToolTip>
   );
-}
+});
+
+NavigationItem.displayName = "Child"; //Not necessary
+export default NavigationItem;

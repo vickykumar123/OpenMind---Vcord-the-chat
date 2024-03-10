@@ -7,6 +7,7 @@ import qs from "query-string";
 import {Form, FormControl, FormField, FormItem} from "../ui/form";
 import {Input} from "../ui/input";
 import axios from "axios";
+import {memo} from "react";
 
 interface ChatInputProps {
   apiUrl: string;
@@ -19,7 +20,7 @@ const formSchema = z.object({
   content: z.string().min(1),
 });
 
-export default function ChatInput({apiUrl, query, name, type}: ChatInputProps) {
+const ChatInput = memo(({apiUrl, query, name, type}: ChatInputProps) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -77,4 +78,7 @@ export default function ChatInput({apiUrl, query, name, type}: ChatInputProps) {
       </form>
     </Form>
   );
-}
+});
+
+ChatInput.displayName = "Child";
+export default ChatInput;

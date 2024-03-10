@@ -1,7 +1,7 @@
 "use client";
 
 import {Search} from "lucide-react";
-import {useEffect, useState} from "react";
+import {memo, useEffect, useState} from "react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -26,7 +26,7 @@ interface ServerSearchProps {
   }[];
 }
 
-export default function ServerSearch({data}: ServerSearchProps) {
+const ServerSearch = memo(({data}: ServerSearchProps) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
@@ -46,11 +46,11 @@ export default function ServerSearch({data}: ServerSearchProps) {
     setOpen(false);
 
     if (type === "member") {
-      return router.push(`/servers/${params.serverId}/conversation/${id}`);
+      return router.push(`/servers/${params?.serverId}/conversation/${id}`);
     }
 
     if (type === "channel") {
-      return router.push(`/servers/${params.serverId}/channels/${id}`);
+      return router.push(`/servers/${params?.serverId}/channels/${id}`);
     }
   };
 
@@ -98,4 +98,7 @@ export default function ServerSearch({data}: ServerSearchProps) {
       </CommandDialog>
     </>
   );
-}
+});
+
+ServerSearch.displayName = "Child";
+export default ServerSearch;

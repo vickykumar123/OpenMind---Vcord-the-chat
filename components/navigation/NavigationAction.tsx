@@ -3,8 +3,9 @@
 import {Plus} from "lucide-react";
 import {ToolTip} from "../Tooltip";
 import {useModal} from "@/hooks/useModelStore";
+import {memo} from "react";
 
-export default function NavigationAction() {
+const NavigationAction = memo(() => {
   const {onOpen} = useModal();
 
   return (
@@ -24,4 +25,7 @@ export default function NavigationAction() {
       </ToolTip>
     </div>
   );
-}
+});
+
+NavigationAction.displayName = "Child"; //Not necessary
+export default NavigationAction;

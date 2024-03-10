@@ -19,13 +19,14 @@ import {
   Users,
 } from "lucide-react";
 import {useModal} from "@/hooks/useModelStore";
+import {memo} from "react";
 
 interface ServerHeaderProps {
   server: ServerWithMembersWithProfiles;
   role?: MemberRole;
 }
 
-export default function ServerHeader({server, role}: ServerHeaderProps) {
+const ServerHeader = memo(({server, role}: ServerHeaderProps) => {
   const {onOpen} = useModal();
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
@@ -98,4 +99,8 @@ export default function ServerHeader({server, role}: ServerHeaderProps) {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+});
+
+ServerHeader.displayName = "Child";
+
+export default ServerHeader;

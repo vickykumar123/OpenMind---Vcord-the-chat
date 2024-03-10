@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import {memo, useEffect, useState} from "react";
 import CreateServerModal from "../modal/CreateServerModal";
 import InviteModal from "../modal/InviteModal";
 import EditServerModal from "../modal/EditServerModal";
@@ -12,7 +12,7 @@ import DeleteServerModal from "../modal/DeleteServerModal";
 import DeleteChannel from "../modal/DeleteChannelModal";
 import EditChannelModal from "../modal/EditChannelModal";
 
-export function ModalProvider() {
+export const ModalProvider = memo(() => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -34,4 +34,6 @@ export function ModalProvider() {
       <EditChannelModal />
     </>
   );
-}
+});
+
+ModalProvider.displayName = "Child";

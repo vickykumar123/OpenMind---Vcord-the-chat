@@ -6,6 +6,7 @@ import {ShieldAlert, ShieldCheck} from "lucide-react";
 import {useParams, useRouter} from "next/navigation";
 import UserAvatar from "../UserAvatar";
 import {ProfileWithoutName} from "@/types";
+import {memo} from "react";
 
 interface ServerMemberProps {
   member: Member & {profile: ProfileWithoutName};
@@ -20,7 +21,7 @@ const roleIconMap = {
   [MemberRole.ADMIN]: <ShieldAlert className="h-4 w-4 ml-2 text-rose-500" />,
 };
 
-export default function ServerMember({member, server}: ServerMemberProps) {
+const ServerMember = memo(({member, server}: ServerMemberProps) => {
   const params = useParams();
   const router = useRouter();
 
@@ -53,4 +54,7 @@ export default function ServerMember({member, server}: ServerMemberProps) {
       {icon}
     </button>
   );
-}
+});
+
+ServerMember.displayName = "Child";
+export default ServerMember;

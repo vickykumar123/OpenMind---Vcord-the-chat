@@ -6,6 +6,7 @@ import {Edit, Hash, Lock, Mic, Trash, UserPlus2, Video} from "lucide-react";
 import {useParams, useRouter} from "next/navigation";
 import {ToolTip} from "../Tooltip";
 import {ModelType, useModal} from "@/hooks/useModelStore";
+import {memo} from "react";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -19,18 +20,14 @@ const iconMap = {
   [ChannelType.VIDEO]: Video,
 };
 
-export default function ServerChannel({
-  channel,
-  server,
-  role,
-}: ServerChannelProps) {
+const ServerChannel = memo(({channel, server, role}: ServerChannelProps) => {
   const {onOpen} = useModal();
   const router = useRouter();
   const params = useParams();
   const Icon = iconMap[channel.type];
 
   const onClick = () => {
-    router.push(`/servers/${params.serverId}/channels/${channel.id}`);
+    router.push(`/servers/${params?.serverId}/channels/${channel.id}`);
   };
 
   const onAction = (e: React.MouseEvent, action: ModelType) => {
@@ -88,4 +85,6 @@ export default function ServerChannel({
       )}
     </button>
   );
-}
+});
+ServerChannel.displayName = "Child";
+export default ServerChannel;
