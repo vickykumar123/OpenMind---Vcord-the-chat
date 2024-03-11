@@ -6,11 +6,12 @@ import InviteModal from "../modal/InviteModal";
 import EditServerModal from "../modal/EditServerModal";
 import MembersModal from "../modal/MembersModal";
 import CreateChannelModal from "../modal/CreateChannelModal";
-import LeaveServer from "../modal/LeaveServerModal";
+
 import LeaveServerModal from "../modal/LeaveServerModal";
 import DeleteServerModal from "../modal/DeleteServerModal";
 import DeleteChannel from "../modal/DeleteChannelModal";
 import EditChannelModal from "../modal/EditChannelModal";
+import MessageAttachment from "../modal/MessageAttachment";
 
 export const ModalProvider = memo(() => {
   const [isMounted, setIsMounted] = useState(false);
@@ -32,6 +33,7 @@ export const ModalProvider = memo(() => {
       <DeleteServerModal />
       <DeleteChannel />
       <EditChannelModal />
+      <MessageAttachment />
     </>
   );
 });
