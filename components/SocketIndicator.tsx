@@ -1,6 +1,6 @@
 "use client";
 
-import {useSocket} from "./providers/SocketProvider";
+import {useSocket} from "./providers/context/SocketProvider";
 import {Badge} from "./ui/badge";
 
 export default function SocketIndicator() {
