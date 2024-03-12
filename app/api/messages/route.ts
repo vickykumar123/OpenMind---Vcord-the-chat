@@ -13,7 +13,6 @@ export async function GET(req: Request) {
 
     const cursor = searchParams.get("cursor");
     const channelId = searchParams.get("channelId");
-    console.log(channelId, cursor);
 
     if (!profile) {
       return new NextResponse("Unauthorized", {status: 401});
@@ -25,12 +24,12 @@ export async function GET(req: Request) {
 
     let messages: Message[] = [];
 
-    if (cursor) {
+    if (cursor !== "0") {
       messages = await db.message.findMany({
         take: MESSAGES_BATCH,
         skip: 1,
         cursor: {
-          id: cursor,
+          id: cursor!,
         },
         where: {
           channelId,
@@ -38,7 +37,22 @@ export async function GET(req: Request) {
         include: {
           member: {
             include: {
-              profile: true,
+              profile: {
+                select: {
+                  id: true,
+                  name: false,
+                  imageUrl: true,
+                  email: false,
+                  anon_name: true,
+                  createdAt: true,
+                  updatedAt: true,
+                  servers: true,
+                  members: true,
+                  channels: true,
+                  userId: true,
+                  _count: true,
+                },
+              },
             },
           },
         },
@@ -55,7 +69,22 @@ export async function GET(req: Request) {
         include: {
           member: {
             include: {
-              profile: true,
+              profile: {
+                select: {
+                  id: true,
+                  name: false,
+                  imageUrl: true,
+                  email: false,
+                  anon_name: true,
+                  createdAt: true,
+                  updatedAt: true,
+                  servers: true,
+                  members: true,
+                  channels: true,
+                  userId: true,
+                  _count: true,
+                },
+              },
             },
           },
         },
@@ -71,7 +100,6 @@ export async function GET(req: Request) {
       nextCursor = messages[MESSAGES_BATCH - 1].id;
     }
 
-    console.log(messages);
     return NextResponse.json({
       items: messages,
       nextCursor,

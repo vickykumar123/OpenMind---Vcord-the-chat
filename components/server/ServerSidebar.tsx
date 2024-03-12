@@ -46,7 +46,22 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
       },
       members: {
         include: {
-          profile: true,
+          profile: {
+            select: {
+              id: true,
+              name: false,
+              imageUrl: true,
+              email: false,
+              anon_name: true,
+              createdAt: true,
+              updatedAt: true,
+              servers: true,
+              members: true,
+              channels: true,
+              userId: true,
+              _count: true,
+            },
+          },
         },
         orderBy: {
           role: "asc",
@@ -186,9 +201,7 @@ export default async function ServerSidebar({serverId}: ServerSidebarProps) {
                 server={server}
               />
               {members.map((member) => (
-                <Suspense fallback={<SkeletonLoader />} key={member.id}>
-                  <ServerMember member={member} server={server} />
-                </Suspense>
+                <ServerMember key={member.id} member={member} server={server} />
               ))}
             </div>
           )}

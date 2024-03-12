@@ -35,14 +35,20 @@ export const useChatQuery = ({
     return res.json();
   };
 
-  const {data, fetchNextPage, hasNextPage, isFetchingNextPage, status} =
-    useInfiniteQuery({
-      queryKey: [queryKey],
-      queryFn: fetchMessages,
-      initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage?.nextCursor,
-      refetchInterval: isConnected ? false : 1000,
-    });
+  const {
+    data,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
+    queryKey: [queryKey],
+    queryFn: fetchMessages,
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage?.nextCursor,
+    refetchInterval: isConnected ? false : 1000,
+  });
 
   return {
     data,
@@ -50,5 +56,6 @@ export const useChatQuery = ({
     hasNextPage,
     isFetchingNextPage,
     status,
+    isFetching,
   };
 };
