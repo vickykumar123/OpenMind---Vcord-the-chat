@@ -12,7 +12,7 @@ import ServerSection from "./ServerSection";
 import ServerChannel from "./ServerChannel";
 import ServerMember from "./ServerMember";
 import {Suspense} from "react";
-import SkeletonLoader from "../loading";
+import SkeletonLoader from "../../app/(main)/(routes)/loading";
 
 interface ServerSidebarProps {
   serverId: string;
