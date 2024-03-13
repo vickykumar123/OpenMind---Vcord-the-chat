@@ -24,12 +24,12 @@ export async function GET(req: Request) {
 
     let messages: Message[] = [];
 
-    if (cursor !== "0") {
+    if (cursor) {
       messages = await db.message.findMany({
         take: MESSAGES_BATCH,
         skip: 1,
         cursor: {
-          id: cursor!,
+          id: cursor,
         },
         where: {
           channelId,

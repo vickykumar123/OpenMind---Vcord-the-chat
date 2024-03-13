@@ -8,6 +8,7 @@ import {Loader2, ServerCrash} from "lucide-react";
 import ChatWelcome from "./ChatWelcome";
 import {useChatQuery} from "@/hooks/useChatQuery";
 import ChatItem from "./ChatItem";
+import {useChatSocket} from "@/hooks/useChatSocket";
 
 interface ChatMessagesProps {
   name: string;
@@ -40,22 +41,21 @@ const ChatMessages = ({
   paramValue,
   type,
 }: ChatMessagesProps) => {
-  const queryKey = `chat:${chatId}`;
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    status,
-    isFetching,
-  } = useChatQuery({
-    queryKey,
-    apiUrl,
-    paramKey,
-    paramValue,
-  });
+  const queryKey = `chat:${chatId}`; // for react-query
+  const addKey = `chat:${chatId}:messages`;
+  const updateKey = `chat:${chatId}:messages:update`;
 
-  if (status === "pending" && isFetching) {
+  const {data, fetchNextPage, hasNextPage, isFetchingNextPage, status} =
+    useChatQuery({
+      queryKey,
+      apiUrl,
+      paramKey,
+      paramValue,
+    });
+
+  useChatSocket({addKey, updateKey, queryKey});
+
+  if (status === "loading") {
     return (
       <div className="flex flex-col flex-1 justify-center items-center">
         <Loader2 className="h-7 w-7 text-zinc-500 animate-spin" />

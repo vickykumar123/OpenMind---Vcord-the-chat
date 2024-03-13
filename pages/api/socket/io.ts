@@ -18,6 +18,7 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIo) => {
       path: path,
       addTrailingSlash: false, //omit the trailing slash and use /socket.io instead of /socket.io/
     });
+
     res.socket.server.io = io;
   }
   res.end();
