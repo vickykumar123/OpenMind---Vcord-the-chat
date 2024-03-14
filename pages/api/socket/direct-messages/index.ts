@@ -50,12 +50,42 @@ export default async function handler(
       include: {
         memberOne: {
           include: {
-            profile: true,
+            profile: {
+              select: {
+                id: true,
+                name: false,
+                imageUrl: true,
+                email: false,
+                anon_name: true,
+                createdAt: false,
+                updatedAt: false,
+                servers: true,
+                members: true,
+                channels: true,
+                userId: true,
+                _count: true,
+              },
+            },
           },
         },
         memberTwo: {
           include: {
-            profile: true,
+            profile: {
+              select: {
+                id: true,
+                name: false,
+                imageUrl: true,
+                email: false,
+                anon_name: true,
+                createdAt: false,
+                updatedAt: false,
+                servers: true,
+                members: true,
+                channels: true,
+                userId: true,
+                _count: true,
+              },
+            },
           },
         },
       },
