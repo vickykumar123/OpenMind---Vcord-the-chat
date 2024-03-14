@@ -5,8 +5,8 @@ import {Channel, ChannelType, MemberRole, Server} from "@prisma/client";
 import {Edit, Hash, Lock, Mic, Trash, UserPlus2, Video} from "lucide-react";
 import {useParams, useRouter} from "next/navigation";
 import {ToolTip} from "../Tooltip";
-import {ModelType, useModal} from "@/hooks/useModelStore";
 import {memo} from "react";
+import {ModelType, useModal} from "hooks/useModelStore";
 
 interface ServerChannelProps {
   channel: Channel;

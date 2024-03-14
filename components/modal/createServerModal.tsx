@@ -26,7 +26,7 @@ import {Input} from "../ui/input";
 import {Button} from "../ui/button";
 import FileUpload from "../FileUpload";
 import {useRouter} from "next/navigation";
-import {useModal} from "@/hooks/useModelStore";
+import {useModal} from "hooks/useModelStore";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -37,7 +37,7 @@ const formSchema = z.object({
   }),
 });
 
-export function CreateServerModal() {
+export default function CreateServerModal() {
   const {isOpen, onClose, type} = useModal();
   const router = useRouter();
 

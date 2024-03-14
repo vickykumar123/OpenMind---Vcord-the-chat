@@ -2,7 +2,6 @@
 
 import * as z from "zod";
 import qs from "query-string";
-import {ProfileWithoutName} from "@/types";
 import {Member, MemberRole} from "@prisma/client";
 import {
   DownloadIcon,
@@ -23,8 +22,9 @@ import {Form, FormControl, FormField, FormItem} from "../ui/form";
 import {Input} from "../ui/input";
 import {Button} from "../ui/button";
 import axios from "axios";
-import {useModal} from "@/hooks/useModelStore";
 import {useParams, useRouter} from "next/navigation";
+import {ProfileWithoutName} from "types";
+import {useModal} from "hooks/useModelStore";
 
 interface ChatItemProps {
   id: string;

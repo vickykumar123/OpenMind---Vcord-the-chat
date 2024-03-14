@@ -24,7 +24,6 @@ import {
 import {Input} from "../ui/input";
 import {Button} from "../ui/button";
 import {useRouter} from "next/navigation";
-import {useModal} from "@/hooks/useModelStore";
 import {ChannelType} from "@prisma/client";
 import {
   Select,
@@ -34,6 +33,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import {useEffect} from "react";
+import {useModal} from "hooks/useModelStore";
 
 const formSchema = z.object({
   name: z

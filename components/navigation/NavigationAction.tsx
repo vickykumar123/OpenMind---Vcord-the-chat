@@ -2,8 +2,8 @@
 
 import {Plus} from "lucide-react";
 import {ToolTip} from "../Tooltip";
-import {useModal} from "@/hooks/useModelStore";
 import {memo} from "react";
+import {useModal} from "hooks/useModelStore";
 
 const NavigationAction = memo(() => {
   const {onOpen} = useModal();

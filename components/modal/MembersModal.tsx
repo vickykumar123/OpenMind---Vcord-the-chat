@@ -1,7 +1,6 @@
 "use client";
 
 import qs from "query-string";
-import {ServerWithMembersWithProfiles} from "@/types";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +9,6 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 
-import {useModal} from "@/hooks/useModelStore";
 import {ScrollArea} from "../ui/scroll-area";
 import UserAvatar from "../UserAvatar";
 import {
@@ -39,6 +37,8 @@ import {MemberRole} from "@prisma/client";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {profile} from "console";
+import {ServerWithMembersWithProfiles} from "types";
+import {useModal} from "hooks/useModelStore";
 
 const roleIconMap = {
   GUEST: null,

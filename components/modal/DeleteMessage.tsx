@@ -12,8 +12,8 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 
-import {useModal} from "@/hooks/useModelStore";
 import {Button} from "../ui/button";
+import {useModal} from "hooks/useModelStore";
 
 export default function DeleteMessage() {
   const {isOpen, onClose, type, data} = useModal();

@@ -9,14 +9,14 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 
-import {useModal} from "@/hooks/useModelStore";
 import {Button} from "../ui/button";
 import {Input} from "../ui/input";
 import {Label} from "../ui/label";
 import {Check, Copy, RefreshCw} from "lucide-react";
-import {useOrigin} from "@/hooks/useOrigin";
 import {useState} from "react";
 import axios from "axios";
+import {useModal} from "hooks/useModelStore";
+import {useOrigin} from "hooks/useOrigin";
 
 export default function InviteModal() {
   const {onOpen, isOpen, onClose, type, data} = useModal();
