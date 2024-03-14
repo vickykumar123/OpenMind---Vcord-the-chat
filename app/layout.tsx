@@ -15,11 +15,7 @@ export const metadata: Metadata = {
   description: "OpenMind is fully anonymous chat application.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
