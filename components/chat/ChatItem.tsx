@@ -81,7 +81,7 @@ export default function ChatItem({
     });
   }, [content, form]);
 
-  const fileType = fileUrl?.split("")[1];
+  const fileType = fileUrl?.split(".").pop();
   const isAdmin = currentMember.role === MemberRole.ADMIN;
   const isModerator = currentMember.role === MemberRole.MODERATOR;
   const isOwner = currentMember.id === member.id;
