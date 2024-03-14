@@ -2,7 +2,6 @@
 
 import * as z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 
 import axios from "axios";
