@@ -37,7 +37,6 @@ export default function DeleteChannel() {
 
       onClose();
       router.refresh();
-      window.location.reload();
       router.push(`/servers/${server?.id}`);
     } catch (error) {
       console.log(error);
