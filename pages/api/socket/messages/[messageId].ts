@@ -1,6 +1,6 @@
 import {currentUserPages} from "@/lib/current-user-pages";
 import {db} from "@/lib/db";
-import {NextApiResponseServerIo} from "types";
+import {NextApiResponseServerIo} from "@/types";
 import {MemberRole} from "@prisma/client";
 import {NextApiRequest} from "next";
 

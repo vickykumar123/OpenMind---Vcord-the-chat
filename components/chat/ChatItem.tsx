@@ -23,8 +23,8 @@ import {Input} from "../ui/input";
 import {Button} from "../ui/button";
 import axios from "axios";
 import {useParams, useRouter} from "next/navigation";
-import {ProfileWithoutName} from "types";
-import {useModal} from "hooks/useModelStore";
+import {ProfileWithoutName} from "@/types";
+import {useModal} from "@/hooks/useModelStore";
 
 interface ChatItemProps {
   id: string;

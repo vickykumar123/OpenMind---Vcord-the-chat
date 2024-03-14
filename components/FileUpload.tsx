@@ -58,6 +58,7 @@ export default function FileUpload({
 
   return (
     <UploadDropzone
+      //@ts-ignore
       endpoint={endpoint}
       onClientUploadComplete={(res) => {
         onChange(res?.[0].url);

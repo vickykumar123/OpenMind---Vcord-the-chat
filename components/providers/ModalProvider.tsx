@@ -1,18 +1,18 @@
 "use client";
 
 import {memo, useEffect, useState} from "react";
-import InviteModal from "../modal/InviteModal";
-import EditServerModal from "../modal/EditServerModal";
-import MembersModal from "../modal/MembersModal";
-import CreateChannelModal from "../modal/CreateChannelModal";
+import InviteModal from "../modals/InviteModal";
+import EditServerModal from "../modals/EditServerModal";
+import MembersModal from "../modals/MembersModal";
+import CreateChannelModal from "../modals/CreateChannelModal";
 
-import LeaveServerModal from "../modal/LeaveServerModal";
-import DeleteServerModal from "../modal/DeleteServerModal";
-import DeleteChannel from "../modal/DeleteChannelModal";
-import EditChannelModal from "../modal/EditChannelModal";
-import MessageAttachment from "../modal/MessageAttachment";
-import DeleteMessage from "../modal/DeleteMessage";
-import CreateServerModal from "../modal/CreateServerModal";
+import LeaveServerModal from "../modals/LeaveServerModal";
+import DeleteServerModal from "../modals/DeleteServerModal";
+import DeleteChannel from "../modals/DeleteChannelModal";
+import EditChannelModal from "../modals/EditChannelModal";
+import MessageAttachment from "../modals/MessageAttachment";
+import DeleteMessage from "../modals/DeleteMessage";
+import CreateServerModal from "../modals/CreateServerModal";
 
 export const ModalProvider = memo(() => {
   const [isMounted, setIsMounted] = useState(false);

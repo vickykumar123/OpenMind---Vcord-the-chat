@@ -1,8 +1,5 @@
 "use client";
 
-import {useState} from "react";
-import axios from "axios";
-import qs from "query-string";
 import {
   Dialog,
   DialogContent,
@@ -13,25 +10,28 @@ import {
 } from "../ui/dialog";
 
 import {Button} from "../ui/button";
-import {useModal} from "hooks/useModelStore";
 
-export default function DeleteMessage() {
+import {useState} from "react";
+import axios from "axios";
+import {useRouter} from "next/navigation";
+import {useModal} from "@/hooks/useModelStore";
+
+export default function LeaveServerModal() {
   const {isOpen, onClose, type, data} = useModal();
-
-  const isModalOpen = isOpen && type === "deleteMessage";
-  const {apiUrl, query} = data;
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const isModalOpen = isOpen && type === "leaveServer";
+  const {server} = data;
 
-  const onDelete = async () => {
+  const onLeave = async () => {
     try {
       setIsLoading(true);
-      const url = qs.stringifyUrl({
-        url: apiUrl || "",
-        query,
-      });
-      await axios.delete(url);
+      await axios.patch(`/api/server/${server?.id}/leave`);
 
       onClose();
+      router.refresh();
+      window.location.reload();
+      router.push("/");
     } catch (error) {
       console.log(error);
     } finally {
@@ -44,10 +44,14 @@ export default function DeleteMessage() {
       <DialogContent className="bg-white text-black overflow-hidden p-0">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Delete Message
+            Leave Server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Are you sure, You want to delete this message for permanently ?
+            Are you sure, You want to leave{" "}
+            <span className="text-black font-bold">
+              &quot;{server?.name}&quot;
+            </span>{" "}
+            ?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="px-6 bg-gray-100 py-4 ">
@@ -56,7 +60,7 @@ export default function DeleteMessage() {
               Cancel
             </Button>
             <Button
-              onClick={onDelete}
+              onClick={onLeave}
               variant="destructive"
               disabled={isLoading}
             >

@@ -14,7 +14,7 @@ import {Button} from "../ui/button";
 import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
-import {useModal} from "hooks/useModelStore";
+import {useModal} from "@/hooks/useModelStore";
 
 export default function DeleteServerModal() {
   const {isOpen, onClose, type, data} = useModal();

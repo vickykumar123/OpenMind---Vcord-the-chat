@@ -6,10 +6,10 @@ import {format} from "date-fns";
 import {Loader2, ServerCrash} from "lucide-react";
 import ChatWelcome from "./ChatWelcome";
 import ChatItem from "./ChatItem";
-import {ProfileWithoutName} from "types";
-import {useChatQuery} from "hooks/useChatQuery";
-import {useChatSocket} from "hooks/useChatSocket";
-import {useChatScroll} from "hooks/useChatScroll";
+import {ProfileWithoutName} from "@/types";
+import {useChatQuery} from "@/hooks/useChatQuery";
+import {useChatSocket} from "@/hooks/useChatSocket";
+import {useChatScroll} from "@/hooks/useChatScroll";
 
 interface ChatMessagesProps {
   name: string;

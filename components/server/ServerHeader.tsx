@@ -18,8 +18,8 @@ import {
   Users,
 } from "lucide-react";
 import {memo} from "react";
-import {ServerWithMembersWithProfiles} from "types";
-import {useModal} from "hooks/useModelStore";
+import {ServerWithMembersWithProfiles} from "@/types";
+import {useModal} from "@/hooks/useModelStore";
 
 interface ServerHeaderProps {
   server: ServerWithMembersWithProfiles;

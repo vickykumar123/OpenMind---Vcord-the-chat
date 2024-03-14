@@ -33,7 +33,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import {useEffect} from "react";
-import {useModal} from "hooks/useModelStore";
+import {useModal} from "@/hooks/useModelStore";
 
 const formSchema = z.object({
   name: z

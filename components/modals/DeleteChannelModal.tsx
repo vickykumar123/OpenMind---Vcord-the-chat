@@ -14,7 +14,7 @@ import {
 } from "../ui/dialog";
 
 import {Button} from "../ui/button";
-import {useModal} from "hooks/useModelStore";
+import {useModal} from "@/hooks/useModelStore";
 
 export default function DeleteChannel() {
   const {isOpen, onClose, type, data} = useModal();

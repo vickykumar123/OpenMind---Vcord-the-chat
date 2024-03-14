@@ -37,8 +37,8 @@ import {MemberRole} from "@prisma/client";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {profile} from "console";
-import {ServerWithMembersWithProfiles} from "types";
-import {useModal} from "hooks/useModelStore";
+import {ServerWithMembersWithProfiles} from "@/types";
+import {useModal} from "@/hooks/useModelStore";
 
 const roleIconMap = {
   GUEST: null,

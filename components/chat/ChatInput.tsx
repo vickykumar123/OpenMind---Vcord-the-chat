@@ -8,9 +8,9 @@ import {Form, FormControl, FormField, FormItem} from "../ui/form";
 import {Input} from "../ui/input";
 import axios from "axios";
 import {memo} from "react";
-import {useModal} from "hooks/useModelStore";
 import EmojiPicker from "../EmojiPicker";
 import {useRouter} from "next/navigation";
+import {useModal} from "../../hooks/useModelStore";
 
 interface ChatInputProps {
   apiUrl: string;
