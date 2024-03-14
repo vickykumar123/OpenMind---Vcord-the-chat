@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Openmind: A Fully Anonymous Chat Application
 
-## Getting Started
+🚀 Welcome to Openmind, an innovative chat platform built on Next.js, revolutionizing online conversations with complete anonymity!
 
-First, run the development server:
+![image](https://github.com/vickykumar123/OpenMind---Vcord-the-chat/assets/41174782/8f2d6685-d804-4437-91fb-318c50a76124)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Complete Anonymity:** Chat freely without revealing your identity, ensuring privacy for all users.
+- **Real-time Messaging:** Enjoy seamless communication with Socket.io for instant message delivery.
+- **Attachment Support:** Share files effortlessly using UploadThing integration.
+- **Message Management:** Edit and delete messages in real time, enhancing control over your conversations.
+- **Versatile Communication:** Create text, audio, and video call channels for diverse interactions.
+- **Member Management:** Administer conversations with features like kicking and role changes.
+- **Invite System:** Generate unique invite links for seamless onboarding of new members.
+- **Infinite Message Loading:** Experience smooth scrolling with batched message loading.
+- **Stunning UI:** Delight in a beautiful interface crafted with TailwindCSS and ShadcnUI.
+- **Responsive Design:** Enjoy a seamless experience across devices with full mobile support.
+- **Light/Dark Mode:** Personalize your chat experience with customizable themes.
+- **Websocket Fallback:** Stay connected with polling and alerts in case of websocket issues.
+- **Prisma ORM:** Utilize a robust ORM for efficient database management.
+- **Clerk Authentication:** Ensure secure user authentication with Clerk integration.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Getting Started:
 
-## Learn More
+To get started with Openmind, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Configure your PostgreSQL database with AWS RDS.
+4. Set up necessary environment variables.
+5. Run the application using `npm run dev`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Join the Conversation:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Join the conversation with Openmind and experience anonymous communication like never before! Use the hashtags #Openmind, #AnonymousChat, and #PrivacyFirst to share your experience.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+🌐 Explore more at [Openmind](
+openmind-vcord-the-chat-production.up.railway.app)
