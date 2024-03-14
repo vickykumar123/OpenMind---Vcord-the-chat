@@ -1,7 +1,7 @@
 "use client";
 
 import {memo, useEffect, useState} from "react";
-import CreateServerModal from "@/components/modal/CreateServerModal";
+import {CreateServerModal} from "@/components/modal/CreateServerModal";
 import InviteModal from "../modal/InviteModal";
 import EditServerModal from "../modal/EditServerModal";
 import MembersModal from "../modal/MembersModal";
